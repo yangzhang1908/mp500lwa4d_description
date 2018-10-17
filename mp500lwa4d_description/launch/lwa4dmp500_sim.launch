@@ -48,4 +48,9 @@
       <param name="default_topic" value="/mp500lwa4d/mobile_base_controller/cmd_vel"/>
       <remap from="/cmd_vel" to="/mp500lwa4d/mobile_base_controller/cmd_vel"/>
   </node>
+
+  <!--node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+      <param name="default_topic" value="/mp500lwa4d/arm_controller/cmd_pos"/>
+      <remap from="/cmd_pos" to="/mp500lwa4d/arm_controller/cmd_pos"/>
+  </node-->
 </launch>

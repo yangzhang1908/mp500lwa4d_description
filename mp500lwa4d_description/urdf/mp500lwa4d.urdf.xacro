@@ -3,7 +3,6 @@
        name="mp500lwa4d" >
   <!--neo_mp_500-->
   <xacro:include filename="$(find neo_mp_500)/robot_model/mp_500/mp500.urdf.xacro" />
-  <!-- common stuff -->
   <xacro:include filename="$(find schunk_description)/urdf/common.xacro" />
   <xacro:include filename="$(find schunk_description)/urdf/materials.urdf.xacro" />
   <xacro:include filename="$(find mp500lwa4d_description)/urdf/sr.gazebo"/>

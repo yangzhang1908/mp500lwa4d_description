@@ -97,7 +97,7 @@
     <inertial>
       <mass value="1.0" />
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078" iyz="0" izz="0.0045" />
+      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078125" iyz="0" izz="0.0045" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 -1.57" />
@@ -131,7 +131,7 @@
       <mass value="1" />
       <origin xyz="0 0 0" rpy="0 0 0" />
       <!--inertia ixx="0.0051" ixy="0" ixz="0" iyy="0.0051" iyz="0" izz="0.009" /-->
-      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078" iyz="0" izz="0.0045" />
+      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078125" iyz="0" izz="0.0045" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 -1.57" />
@@ -172,7 +172,7 @@
     <inertial>
       <mass value="0.01" />
       <origin xyz="0 0 0" rpy="3.14 0 -1.57" />
-      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001" />
     </inertial>
     <visual>
       <origin xyz="0 0 -0.04" rpy="3.14 0 -1.57" />
@@ -194,7 +194,7 @@
     <inertial>
       <mass value="0.01" />
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.0013" ixy="0" ixz="0" iyy="0.0013" iyz="0" izz="0.0013" />
+      <inertia ixx="0.00013" ixy="0" ixz="0" iyy="0.00013" iyz="0" izz="0.00013" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 -1.57" />
@@ -251,7 +251,7 @@
 
 
   <joint name="castor_front_joint" type="fixed">
-    <origin xyz="0.48 0 0.01" rpy="0 0 0"/>
+    <origin xyz="0.32 0 0.01" rpy="0 0 0"/>
      <!--limit effort="100.0" velocity="13.5"/>
     <joint_properties damping="0.0" friction="0.0" /-->
     <parent link="base_link" />
@@ -259,7 +259,7 @@
   </joint>
 
 <!--+++++++++++++++ castor_back +++++++++++++++++++++++++++-->
-  <link name="castor_back">
+  <!--link name="castor_back">
     <inertial>
     <mass value="0.25" />
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -285,15 +285,14 @@
    <mu2 value="0" />
    <kp  value="1.0" />
    <kd  value="1.0" />
-  </gazebo>
+  </gazebo-->
 
-  <joint name="castor_back_joint" type="fixed">
-    <origin xyz="-0.35 0 0.01" rpy="0 0 0"/>
-    <!--limit effort="100.0" velocity="13.5"/>
-    <joint_properties damping="0.0" friction="0.0" /-->
+  <!--joint name="castor_back_joint" type="fixed">
+    <origin xyz="-0.30 0 0.01" rpy="0 0 0"/>
+    
     <parent link="base_link" />
     <child link="castor_back" />
-  </joint>
+  </joint-->
 
 
   <!--xacro:include filename="$(find schunk_description)/urdf/common.xacro" /-->
@@ -317,9 +316,9 @@
 
   <link name="arm_podest_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -344,9 +343,9 @@
   <link name="arm_base_link">
     <!--xacro:default_inertial/-->
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
   </link>
 
@@ -361,9 +360,9 @@
 <!-- arm_1_link-->
   <link name="arm_1_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -389,9 +388,9 @@
 <!-- arm_2_link -->
   <link name="arm_2_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -417,9 +416,9 @@
 <!-- arm_3_link -->
   <link name="arm_3_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -445,9 +444,9 @@
 <!--arm_4_link -->
   <link name="arm_4_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -473,9 +472,9 @@
 <!-- arm_5_link -->
   <link name="arm_5_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -501,9 +500,9 @@
 <!-- arm_6_link -->
   <link name="arm_6_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -529,9 +528,9 @@
 <!--arm_7_link -->
   <link name="arm_7_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -555,9 +554,9 @@
 
   <link name="arm_ee_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="1" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005" />
     </inertial>
   </link>
 
@@ -734,15 +733,10 @@
     <publishTf>1</publishTf>
     <odometrySource>encoder</odometrySource>
   </plugin>
-  <!--plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so"-->
-  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    <!--plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so"-->
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
     <robotNamespace>mp500lwa4d</robotNamespace>
     <filterJointsParam>joint_names</filterJointsParam>
   </plugin>
-  <!--plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
-  <jointName>wheel_left_joint, wheel_right_joint</jointName>
-  </plugin>>-->
 </gazebo>
 
 
