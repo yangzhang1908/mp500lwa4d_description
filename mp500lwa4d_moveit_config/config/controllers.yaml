@@ -12,4 +12,9 @@ controller_list:
         - arm_6_joint
         - arm_7_joint
   
-   
+    - name: /mp500lwa4d/wheel_velocity_controller
+      action_ns: velocity_controllers
+      type: JointTrajectoryController
+      joints:
+        - wheel_right_joint
+        - wheel_left_joint

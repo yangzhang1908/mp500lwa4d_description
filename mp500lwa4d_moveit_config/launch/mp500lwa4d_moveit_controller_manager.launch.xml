@@ -1,7 +1,12 @@
 <launch>
  <!-- Set the param that trajectory_execution_manager needs to find the controller plugin -->
- <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
- <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
+ <!--arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" /-->
+ <param name="moveit_controller_manager" value="moveit_ros_control_interface::MoveItMultiControllerManager"/>
  <!-- load controller_list -->
  <rosparam file="$(find mp500lwa4d_moveit_config)/config/controllers.yaml"/>
 </launch>
+
+<!--launch>
+ <param name="moveit_controller_manager" value="moveit_ros_control_interface::MoveItMultiControllerManager" />
+ <rosparam file="$(find simple_moveit_config)/config/controllers.yaml"/>
+</launch-->

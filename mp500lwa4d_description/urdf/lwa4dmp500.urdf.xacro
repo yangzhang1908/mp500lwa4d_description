@@ -92,12 +92,21 @@
     </collision>
   </link>
 
+  <link name="mobile_dummy_link">
+  </link>
+
+  <joint name="mobile_dummy_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="mobile_dummy_link"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
 <!--+++++++++++++++++++wheel_left_link++++++++++++++++++++++++--> 
   <link name="wheel_left_link" type="wheel">
     <inertial>
       <mass value="1.0" />
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078" iyz="0" izz="0.0045" />
+      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078125" iyz="0" izz="0.0045" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 -1.57" />
@@ -119,7 +128,7 @@
   <joint name="wheel_left_joint" type="revolute">
     <origin xyz="-0.155 0.255 0.13" rpy="0 0 0" />
     <axis xyz="0 1 0"/>
-    <limit effort="10000.0" lower="-1e+16" upper="1e+16" velocity="11.6"/>
+    <limit effort="1000.0" lower="-1e+16" upper="1e+16" velocity="5"/>
     <joint_properties damping="0.0" friction="0.0" />
     <parent link="base_link" />
     <child link="wheel_left_link" />
@@ -131,7 +140,7 @@
       <mass value="1" />
       <origin xyz="0 0 0" rpy="0 0 0" />
       <!--inertia ixx="0.0051" ixy="0" ixz="0" iyy="0.0051" iyz="0" izz="0.009" /-->
-      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078" iyz="0" izz="0.0045" />
+      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078125" iyz="0" izz="0.0045" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 -1.57" />
@@ -152,7 +161,7 @@
   <joint name="wheel_right_joint" type="revolute">
     <origin xyz="-0.155 -0.255 0.13" rpy="0 0 0" />
     <axis xyz="0 1 0"/>
-    <limit effort="10000.0" lower="-1e+16" upper="1e+16" velocity="11.6"/>
+    <limit effort="1000.0" lower="-1e+16" upper="1e+16" velocity="5"/>
     <joint_properties damping="0.0" friction="0.0" />
     <parent link="base_link" />
     <child link="wheel_right_link" />
@@ -172,7 +181,7 @@
     <inertial>
       <mass value="0.01" />
       <origin xyz="0 0 0" rpy="3.14 0 -1.57" />
-      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001" />
     </inertial>
     <visual>
       <origin xyz="0 0 -0.04" rpy="3.14 0 -1.57" />
@@ -194,7 +203,7 @@
     <inertial>
       <mass value="0.01" />
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.0013" ixy="0" ixz="0" iyy="0.0013" iyz="0" izz="0.0013" />
+      <inertia ixx="0.00013" ixy="0" ixz="0" iyy="0.00013" iyz="0" izz="0.00013" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 -1.57" />
@@ -214,7 +223,7 @@
   <joint name="hanger_joint" type="fixed">
     <origin xyz="0.255 0 0.11" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10000.0" lower="-1e+16" upper="1e+16" velocity="13.5"/>
+    <limit effort="1000.0" lower="-1e+16" upper="1e+16" velocity="13.5"/>
     <joint_properties damping="0.0" friction="0.0" />
     <parent link="base_link" />
     <child link="hanger" />
@@ -222,11 +231,11 @@
 
 <!--+++++++++++++++ castor_front +++++++++++++++++++++++++++-->
   <link name="castor_front">
-    <inertial>
+    <!--inertial>
       <mass value="0.25" />
       <origin xyz="0 0 0" rpy="0 0 0" />
       <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025" />
-    </inertial>
+    </inertial-->
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -251,7 +260,7 @@
 
 
   <joint name="castor_front_joint" type="fixed">
-    <origin xyz="0.48 0 0.01" rpy="0 0 0"/>
+    <origin xyz="0.32 0 0.01" rpy="0 0 0"/>
      <!--limit effort="100.0" velocity="13.5"/>
     <joint_properties damping="0.0" friction="0.0" /-->
     <parent link="base_link" />
@@ -259,7 +268,7 @@
   </joint>
 
 <!--+++++++++++++++ castor_back +++++++++++++++++++++++++++-->
-  <link name="castor_back">
+  <!--link name="castor_back">
     <inertial>
     <mass value="0.25" />
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -285,15 +294,14 @@
    <mu2 value="0" />
    <kp  value="1.0" />
    <kd  value="1.0" />
-  </gazebo>
+  </gazebo-->
 
-  <joint name="castor_back_joint" type="fixed">
-    <origin xyz="-0.35 0 0.01" rpy="0 0 0"/>
-    <!--limit effort="100.0" velocity="13.5"/>
-    <joint_properties damping="0.0" friction="0.0" /-->
+  <!--joint name="castor_back_joint" type="fixed">
+    <origin xyz="-0.30 0 0.01" rpy="0 0 0"/>
+    
     <parent link="base_link" />
     <child link="castor_back" />
-  </joint>
+  </joint-->
 
 
   <!--xacro:include filename="$(find schunk_description)/urdf/common.xacro" /-->
@@ -317,9 +325,9 @@
 
   <link name="arm_podest_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -344,9 +352,9 @@
   <link name="arm_base_link">
     <!--xacro:default_inertial/-->
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
   </link>
 
@@ -356,14 +364,14 @@
     <axis xyz="0 0 1"/>
     <parent link="arm_base_link"/>
     <child link="arm_1_link"/>
-    <limit effort="216" velocity="0.43633" lower="${-M_PI+safety_offset}" upper="${M_PI-safety_offset}"/>
+    <limit effort="216" velocity="0.4363" lower="${-M_PI+safety_offset}" upper="${M_PI-safety_offset}"/>
   </joint>
 <!-- arm_1_link-->
   <link name="arm_1_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -389,9 +397,9 @@
 <!-- arm_2_link -->
   <link name="arm_2_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -412,14 +420,14 @@
     <axis xyz="0 0 1"/>
     <parent link="arm_2_link"/>
     <child link="arm_3_link"/>
-    <limit effort="81.5" velocity="0.4189" lower="${-M_PI + safety_offset}" upper="${M_PI - safety_offset}"/>
+    <limit effort="81.5" velocity="0.4186" lower="${-M_PI + safety_offset}" upper="${M_PI - safety_offset}"/>
   </joint>
 <!-- arm_3_link -->
   <link name="arm_3_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -440,14 +448,14 @@
     <axis xyz="0 0 1"/>
     <parent link="arm_3_link"/>
     <child link="arm_4_link"/>
-    <limit effort="81.5" velocity="0.4189" lower="${-2.18 + safety_offset}" upper="${2.18 - safety_offset}"/>
+    <limit effort="81.5" velocity="0.4186" lower="${-2.18 + safety_offset}" upper="${2.18 - safety_offset}"/>
   </joint>
 <!--arm_4_link -->
   <link name="arm_4_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -468,14 +476,14 @@
     <axis xyz="0 0 1"/>
     <parent link="arm_4_link"/>
     <child link="arm_5_link"/>
-    <limit effort="20.7" velocity="0.43633" lower="${-M_PI + safety_offset}" upper="${M_PI - safety_offset}"/>
+    <limit effort="20.7" velocity="0.4363" lower="${-M_PI + safety_offset}" upper="${M_PI - safety_offset}"/>
   </joint>
 <!-- arm_5_link -->
   <link name="arm_5_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -496,14 +504,14 @@
     <axis xyz="0 0 1"/>
     <parent link="arm_5_link"/>
     <child link="arm_6_link"/>
-    <limit effort="15" velocity="1.2566" lower="${-2.09 + safety_offset}" upper="${2.09 - safety_offset}"/>
+    <limit effort="20.7" velocity="0.4363" lower="${-2.09 + safety_offset}" upper="${2.09 - safety_offset}"/>
   </joint>
 <!-- arm_6_link -->
   <link name="arm_6_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -518,20 +526,20 @@
     </collision>
   </link>
 
-  <!-- joint between arm_6_link and arm_7_link -->
+<!-- joint between arm_6_link and arm_7_link -->
   <joint name="arm_7_joint" type="revolute">
     <origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
     <axis xyz="0 0 1"/>
     <parent link="arm_6_link"/>
     <child link="arm_7_link"/>
-    <limit effort="15" velocity="1.2566" lower="${-2.96 + safety_offset}" upper="${2.96 - safety_offset}"/>
+    <limit effort="4.5" velocity="0.9072" lower="${-2.96 + safety_offset}" upper="${2.96 - safety_offset}"/>
   </joint>
 <!--arm_7_link -->
   <link name="arm_7_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
     </inertial>
     <visual>
       <geometry>
@@ -555,161 +563,11 @@
 
   <link name="arm_ee_link">
     <inertial>
-      <mass value="0.01" />
+      <mass value="1" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+      <inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005" />
     </inertial>
   </link>
-
-
-  <!--transmission name="wheel_left_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="wheel_left_joint">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="wheel_left_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>0.1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="wheel_right_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="wheel_right_joint">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="wheel_right_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>0.1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-
-  <transmission name="arm_1_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_1_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_1_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_2_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_2_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_2_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_3_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_3_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_3_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_4_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_4_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_4_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_5_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_5_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_5_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_6_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_6_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_6_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_7_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_7_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_7_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-<gazebo reference="arm_base_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/Black"/>
-</gazebo>
-
-<gazebo reference="arm_1_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/LightGrey"/>
-</gazebo>
-
-<gazebo reference="arm_2_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/Black"/>
-</gazebo>
-
-<gazebo reference="arm_3_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/LightGrey"/>
-</gazebo>
-
-<gazebo reference="arm_4_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/Black"/>
-</gazebo>
-
-<gazebo reference="arm_5_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/LightGrey"/>
-</gazebo>
-
-<gazebo reference="arm_6_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/Black"/>
-</gazebo>
-
-<gazebo reference="arm_7_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/LightGrey"/>
-</gazebo-->
-
 
 <gazebo>
   <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
@@ -720,7 +578,7 @@
     <rightJoint>wheel_right_joint</rightJoint>
     <wheelSeparation>0.51</wheelSeparation>
     <wheelDiameter>0.125</wheelDiameter>
-    <torque>2.5</torque>
+    <torque>11.4</torque>  <!-- 0.95*12-->
     <commandTopic>/mp500lwa4d/mobile_base_controller/cmd_vel</commandTopic>
     <odometryTopic>odom</odometryTopic>
     <odometryFrame>map</odometryFrame>
@@ -729,20 +587,19 @@
     <rosDebugLevel>Debug</rosDebugLevel>
     <publishWheelTF>true</publishWheelTF>
     <publishWheelJointState>true</publishWheelJointState>
-    <wheelAcceleration>0.1</wheelAcceleration>
-    <wheelTorque>2.5</wheelTorque>
+    <wheelAcceleration>0.5</wheelAcceleration>
+    <wheelTorque>11.4</wheelTorque>
     <publishTf>1</publishTf>
     <odometrySource>encoder</odometrySource>
   </plugin>
-  <!--plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so"-->
+
+<!--+++++++++++++++ in My Modell +++++++++++++++++++++++++++-->
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    <!--plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so"-->
     <robotNamespace>mp500lwa4d</robotNamespace>
     <filterJointsParam>joint_names</filterJointsParam>
   </plugin>
-  <!--plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
-  <jointName>wheel_left_joint, wheel_right_joint</jointName>
-  </plugin>>-->
+
+
 </gazebo>
 
 

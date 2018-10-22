@@ -2,72 +2,72 @@
       pid_gains:
      # these gains are used by the gazebo_ros_control plugin
         arm_1_joint:
-          p: 2.0739
-          i: 0.006465
-          d: 0.42
+          p: 2000
+          i: 0.00000005
+          d: 7
           i_clamp: 0
           antiwindup: false
           publish_state: true
         arm_2_joint:
-          p: 2.0739
-          i: 0.006465
-          d: 0.42
+          p: 2000
+          i: 0.00000005
+          d: 7
           i_clamp: 0
           antiwindup: false
           publish_state: true
         arm_3_joint:
-          p: 2.0739
-          i: 0.006465
-          d: 0.42
+          p: 2000
+          i: 0.00000005
+          d: 7
           i_clamp: 0
           antiwindup: false
           publish_state: true
         arm_4_joint:
-          p: 2.0739
-          i: 0.006465
-          d: 0.42
+          p: 2000
+          i: 0.00000005
+          d: 7
           i_clamp: 0
           antiwindup: false
           publish_state: true
         arm_5_joint:
-          p: 2.0739
-          i: 0.006465
-          d: 0.42
+          p: 2000
+          i: 0.00000005
+          d: 7
           i_clamp: 0
           antiwindup: false
           publish_state: true
         arm_6_joint:
-          p: 2.0739
-          i: 0.006465
-          d: 0.42
+          p: 2000
+          i: 0.00000005
+          d: 7
           i_clamp: 0
           antiwindup: false
           publish_state: true
         arm_7_joint:
-          p: 2.0739
-          i: 0.006465
-          d: 0.42
+          p: 2000
+          i: 0.00000005
+          d: 7
           i_clamp: 0
           antiwindup: false
           publish_state: true
         arm_ee_joint:
-          p: 2.0739
-          i: 0.006465
-          d: 0.42
+          p: 2000
+          i: 0.00000005
+          d: 7
           i_clamp: 0
           antiwindup: false
           publish_state: true
-        #wheel_left_joint:
-          #p: 0.75
-          #i: 0.00325
-          #d: 0.0075
-          #i_clamp: 0
-          #antiwindup: false
-          #publish_state: true
-        #wheel_right_joint:
-          #p: 0.75
-          #i: 0.00325
-          #d: 0.0075
-          #i_clamp: 0
-          #antiwindup: false
-          #publish_state: true
+        wheel_left_joint:
+         p: 10.8
+         i: 0.0000012
+         d: 0.0022
+         i_clamp: 0
+         antiwindup: false
+         publish_state: true
+        wheel_right_joint:
+         p: 10.8
+         i: 0.0000012
+         d: 0.0022
+         i_clamp: 0
+         antiwindup: false
+         publish_state: true

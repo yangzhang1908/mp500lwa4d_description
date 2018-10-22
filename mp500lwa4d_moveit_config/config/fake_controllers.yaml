@@ -11,3 +11,18 @@ controller_list:
   - name: fake_gripper_controller
     joints:
       []
+  - name: fake_mobile_base_controller
+    joints:
+      - wheel_left_joint
+      - wheel_right_joint
+  - name: fake_mp500_lwa4d_controller
+    joints:
+      - arm_1_joint
+      - arm_2_joint
+      - arm_3_joint
+      - arm_4_joint
+      - arm_5_joint
+      - arm_6_joint
+      - arm_7_joint
+      - wheel_left_joint
+      - wheel_right_joint
