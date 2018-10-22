@@ -32,7 +32,7 @@
   <rosparam file="$(find mp500lwa4d_description)/controller/arm_controller.yaml" command="load"/>
   <!--rosparam file="$(find simple_robot_description)/controller/wheel_controller.yaml" command="load"/-->
   <rosparam file="$(find mp500lwa4d_description)/controller/wheel_controller.yaml" command="load"/>
-  <!--rosparam file="$(find mp500lwa4d_description)/controller/mobile_base_controller.yaml" command="load"/-->
+  <rosparam file="$(find mp500lwa4d_description)/controller/mobile_base_controller.yaml" command="load"/>
 
   <!--node name="controller_spawner" pkg="controller_manager" type="spawner" ns="mp500lwa4d" args="/mp500lwa4d/joint_state_controller /mp500lwa4d/mobile_base_controller /mp500lwa4d/arm/joint_trajectory_controller " respawn="true" output="screen">
      <param name="rate" value="50" />

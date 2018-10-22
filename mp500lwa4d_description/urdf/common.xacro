@@ -99,7 +99,7 @@
       <hardwareInterface>EffortJointInterface</hardwareInterface-->
     </joint>
     <actuator name="arm_1_motor">
-      <mechanicalReduction>596</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <transmission name="arm_2_trans">
@@ -110,7 +110,7 @@
       <hardwareInterface>EffortJointInterface</hardwareInterface-->
     </joint>
     <actuator name="arm_2_motor">
-      <mechanicalReduction>596</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <transmission name="arm_3_trans">
@@ -121,7 +121,7 @@
       <hardwareInterface>EffortJointInterface</hardwareInterface-->
     </joint>
     <actuator name="arm_3_motor">
-      <mechanicalReduction>625</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <transmission name="arm_4_trans">
@@ -132,7 +132,7 @@
       <hardwareInterface>EffortJointInterface</hardwareInterface-->
     </joint>
     <actuator name="arm_4_motor">
-      <mechanicalReduction>625</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <transmission name="arm_5_trans">
@@ -143,7 +143,7 @@
       <hardwareInterface>EffortJointInterface</hardwareInterface-->
     </joint>
     <actuator name="arm_5_motor">
-      <mechanicalReduction>552</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <transmission name="arm_6_trans">
@@ -154,7 +154,7 @@
       <hardwareInterface>EffortJointInterface</hardwareInterface-->
     </joint>
     <actuator name="arm_6_motor">
-      <mechanicalReduction>552</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <transmission name="arm_7_trans">
@@ -165,7 +165,7 @@
       <hardwareInterface>EffortJointInterface</hardwareInterface-->
     </joint>
     <actuator name="arm_7_motor">
-      <mechanicalReduction>300</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
   <!--transmission name="arm_ee_trans">

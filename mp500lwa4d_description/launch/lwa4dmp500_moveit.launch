@@ -47,7 +47,7 @@
     <arg name="info" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
   </include-->
-  <node name="move_group_interface_demo" pkg="move_group_interface" type="move_group_interface_demo" respawn="false" output="screen">
-  </node>
+  <!--node name="move_group_interface_demo" pkg="move_group_interface" type="move_group_interface_demo" respawn="false" output="screen">
+  </node-->
 
 </launch>
