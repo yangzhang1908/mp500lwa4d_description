@@ -121,7 +121,7 @@ planner_configs:
     dense_delta_fraction: 0.001  # delta fraction for interface detection. default: 0.001
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
 arm:
-  default_planner_config: RRTkConfigDefault
+  default_planner_config: RRTConnectkConfigDefault
   planner_configs:
     - SBLkConfigDefault
     - ESTkConfigDefault
@@ -202,7 +202,7 @@ mobile_base:
     - SPARStwokConfigDefault
   projection_evaluator: joints(wheel_left_joint,wheel_right_joint)
   longest_valid_segment_fraction: 0.005
-mp500_lwa4d:
+mp500lwa4d:
   default_planner_config: RRTConnectkConfigDefault
   planner_configs:
     - SBLkConfigDefault
@@ -228,3 +228,5 @@ mp500_lwa4d:
     - LazyPRMstarkConfigDefault
     - SPARSkConfigDefault
     - SPARStwokConfigDefault
+  projection_evaluator: joints(arm_1_joint,arm_2_joint)
+  longest_valid_segment_fraction: 0.005

@@ -15,7 +15,7 @@ controller_list:
     joints:
       - wheel_left_joint
       - wheel_right_joint
-  - name: fake_mp500_lwa4d_controller
+  - name: fake_mp500lwa4d_controller
     joints:
       - arm_1_joint
       - arm_2_joint
