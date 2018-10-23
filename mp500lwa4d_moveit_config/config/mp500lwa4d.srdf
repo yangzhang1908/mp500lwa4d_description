@@ -18,14 +18,15 @@
         <joint name="arm_6_joint" />
         <joint name="arm_7_joint" />
     </group>
-    <group name="gripper">
-        <joint name="arm_ee_joint" />
-    </group>
     <group name="mobile_base">
         <joint name="wheel_left_joint" />
         <joint name="wheel_right_joint" />
     </group>
+    <group name="gripper">
+        <link name="arm_ee_link" />
+    </group>
     <group name="mp500lwa4d">
+        <joint name="Virtual_joint" />
         <joint name="arm_1_joint" />
         <joint name="arm_2_joint" />
         <joint name="arm_3_joint" />
@@ -36,6 +37,7 @@
         <joint name="arm_ee_joint" />
         <joint name="wheel_left_joint" />
         <joint name="wheel_right_joint" />
+        <joint name="mobile_dummy_joint" />
     </group>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="gripper_ee" parent_link="arm_7_link" group="gripper" parent_group="arm" />
@@ -45,11 +47,8 @@
     <disable_collisions link1="arm_1_link" link2="arm_2_link" reason="Adjacent" />
     <disable_collisions link1="arm_1_link" link2="arm_3_link" reason="Never" />
     <disable_collisions link1="arm_1_link" link2="arm_4_link" reason="Never" />
-    <disable_collisions link1="arm_1_link" link2="arm_7_link" reason="Never" />
     <disable_collisions link1="arm_1_link" link2="arm_podest_link" reason="Adjacent" />
     <disable_collisions link1="arm_1_link" link2="base_link" reason="Never" />
-    <disable_collisions link1="arm_1_link" link2="castor_front" reason="Never" />
-    <disable_collisions link1="arm_1_link" link2="hanger" reason="Never" />
     <disable_collisions link1="arm_1_link" link2="laserscanner_front_link" reason="Never" />
     <disable_collisions link1="arm_1_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_1_link" link2="wheel_right_link" reason="Never" />
@@ -60,8 +59,6 @@
     <disable_collisions link1="arm_2_link" link2="arm_7_link" reason="Never" />
     <disable_collisions link1="arm_2_link" link2="arm_podest_link" reason="Never" />
     <disable_collisions link1="arm_2_link" link2="base_link" reason="Never" />
-    <disable_collisions link1="arm_2_link" link2="castor_front" reason="Never" />
-    <disable_collisions link1="arm_2_link" link2="hanger" reason="Never" />
     <disable_collisions link1="arm_2_link" link2="laserscanner_front_link" reason="Never" />
     <disable_collisions link1="arm_2_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_2_link" link2="wheel_right_link" reason="Never" />
@@ -71,8 +68,6 @@
     <disable_collisions link1="arm_3_link" link2="arm_7_link" reason="Never" />
     <disable_collisions link1="arm_3_link" link2="arm_podest_link" reason="Never" />
     <disable_collisions link1="arm_3_link" link2="base_link" reason="Never" />
-    <disable_collisions link1="arm_3_link" link2="castor_front" reason="Never" />
-    <disable_collisions link1="arm_3_link" link2="hanger" reason="Never" />
     <disable_collisions link1="arm_3_link" link2="laserscanner_front_link" reason="Never" />
     <disable_collisions link1="arm_3_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_3_link" link2="wheel_right_link" reason="Never" />
@@ -81,41 +76,20 @@
     <disable_collisions link1="arm_4_link" link2="arm_7_link" reason="Never" />
     <disable_collisions link1="arm_4_link" link2="arm_podest_link" reason="Never" />
     <disable_collisions link1="arm_4_link" link2="base_link" reason="Never" />
-    <disable_collisions link1="arm_4_link" link2="castor_front" reason="Never" />
-    <disable_collisions link1="arm_4_link" link2="hanger" reason="Never" />
     <disable_collisions link1="arm_4_link" link2="laserscanner_front_link" reason="Never" />
     <disable_collisions link1="arm_4_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_4_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="arm_5_link" link2="arm_6_link" reason="Adjacent" />
-    <disable_collisions link1="arm_5_link" link2="castor_front" reason="Never" />
-    <disable_collisions link1="arm_5_link" link2="hanger" reason="Never" />
     <disable_collisions link1="arm_5_link" link2="wheel_left_link" reason="Never" />
+    <disable_collisions link1="arm_5_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="arm_6_link" link2="arm_7_link" reason="Adjacent" />
-    <disable_collisions link1="arm_6_link" link2="castor_front" reason="Never" />
-    <disable_collisions link1="arm_6_link" link2="hanger" reason="Never" />
-    <disable_collisions link1="arm_6_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_7_link" link2="castor_front" reason="Never" />
-    <disable_collisions link1="arm_7_link" link2="hanger" reason="Never" />
-    <disable_collisions link1="arm_7_link" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="arm_7_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="arm_podest_link" link2="base_link" reason="Adjacent" />
-    <disable_collisions link1="arm_podest_link" link2="castor_front" reason="Never" />
-    <disable_collisions link1="arm_podest_link" link2="hanger" reason="Never" />
     <disable_collisions link1="arm_podest_link" link2="laserscanner_front_link" reason="Never" />
     <disable_collisions link1="arm_podest_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="arm_podest_link" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="base_link" link2="castor_front" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="hanger" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="laserscanner_front_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="wheel_left_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="wheel_right_link" reason="Adjacent" />
-    <disable_collisions link1="castor_front" link2="hanger" reason="Never" />
-    <disable_collisions link1="castor_front" link2="laserscanner_front_link" reason="Never" />
-    <disable_collisions link1="castor_front" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="castor_front" link2="wheel_right_link" reason="Never" />
-    <disable_collisions link1="hanger" link2="laserscanner_front_link" reason="Never" />
-    <disable_collisions link1="hanger" link2="wheel_left_link" reason="Never" />
-    <disable_collisions link1="hanger" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="laserscanner_front_link" link2="wheel_left_link" reason="Never" />
     <disable_collisions link1="laserscanner_front_link" link2="wheel_right_link" reason="Never" />
     <disable_collisions link1="wheel_left_link" link2="wheel_right_link" reason="Never" />

@@ -148,32 +148,6 @@ arm:
     - SPARStwokConfigDefault
   projection_evaluator: joints(arm_1_joint,arm_2_joint)
   longest_valid_segment_fraction: 0.005
-gripper:
-  default_planner_config: RRTConnectkConfigDefault
-  planner_configs:
-    - SBLkConfigDefault
-    - ESTkConfigDefault
-    - LBKPIECEkConfigDefault
-    - BKPIECEkConfigDefault
-    - KPIECEkConfigDefault
-    - RRTkConfigDefault
-    - RRTConnectkConfigDefault
-    - RRTstarkConfigDefault
-    - TRRTkConfigDefault
-    - PRMkConfigDefault
-    - PRMstarkConfigDefault
-    - FMTkConfigDefault
-    - BFMTkConfigDefault
-    - PDSTkConfigDefault
-    - STRIDEkConfigDefault
-    - BiTRRTkConfigDefault
-    - LBTRRTkConfigDefault
-    - BiESTkConfigDefault
-    - ProjESTkConfigDefault
-    - LazyPRMkConfigDefault
-    - LazyPRMstarkConfigDefault
-    - SPARSkConfigDefault
-    - SPARStwokConfigDefault
 mobile_base:
   default_planner_config: RRTConnectkConfigDefault
   planner_configs:
@@ -202,6 +176,32 @@ mobile_base:
     - SPARStwokConfigDefault
   projection_evaluator: joints(wheel_left_joint,wheel_right_joint)
   longest_valid_segment_fraction: 0.005
+gripper:
+  default_planner_config: RRTConnectkConfigDefault
+  planner_configs:
+    - SBLkConfigDefault
+    - ESTkConfigDefault
+    - LBKPIECEkConfigDefault
+    - BKPIECEkConfigDefault
+    - KPIECEkConfigDefault
+    - RRTkConfigDefault
+    - RRTConnectkConfigDefault
+    - RRTstarkConfigDefault
+    - TRRTkConfigDefault
+    - PRMkConfigDefault
+    - PRMstarkConfigDefault
+    - FMTkConfigDefault
+    - BFMTkConfigDefault
+    - PDSTkConfigDefault
+    - STRIDEkConfigDefault
+    - BiTRRTkConfigDefault
+    - LBTRRTkConfigDefault
+    - BiESTkConfigDefault
+    - ProjESTkConfigDefault
+    - LazyPRMkConfigDefault
+    - LazyPRMstarkConfigDefault
+    - SPARSkConfigDefault
+    - SPARStwokConfigDefault
 mp500lwa4d:
   default_planner_config: RRTConnectkConfigDefault
   planner_configs:
@@ -228,5 +228,3 @@ mp500lwa4d:
     - LazyPRMstarkConfigDefault
     - SPARSkConfigDefault
     - SPARStwokConfigDefault
-  projection_evaluator: joints(arm_1_joint,arm_2_joint)
-  longest_valid_segment_fraction: 0.005

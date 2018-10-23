@@ -7,15 +7,9 @@
   <xacro:include filename="$(find mp500lwa4d_description)/urdf/materials.urdf.xacro"/>
   <xacro:include filename="$(find mp500lwa4d_description)/urdf/common.xacro"/>
 
-<!-- Materials -->
-
-
-
-  <!--neo_mp_500-->
-  <!--xacro:include filename="$(find neo_mp_500)/robot_model/mp_500/mp500.urdf.xacro" /-->
 
 <!--++++++++++++++++++++++++++++++base_link++++++++++++++++++++++++++++++++++++++++++++++++++++--> 
-<!--++++++++++++++++++++body++++++++++++++++++++++++++++--> 
+
   <link name="base_link">
     <inertial>
       <mass value="25.67" />
@@ -37,8 +31,27 @@
       <geometry>
         <box size="0.400 0.676 0.300"/>
         <!--cylinder length="0.381" radius="0.2545"/-->
-      </geometry>
+      </geometry> 
     </collision>
+    <visual name="castor_front">
+      <origin xyz="0.32 0 0.01" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005"/>    
+      </geometry>
+      <material name="Neobotix/Grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0.32 0 0.01" rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.005"/>
+      </geometry>
+    </collision> 
+  <!--gazebo reference="caster_front">
+    <mu1 value="0" />
+    <mu2 value="0" />
+    <kp  value="1.0" />
+    <kd  value="1.0" />
+  </gazebo-->
   </link>
 
   <link name="mobile_dummy_link">
@@ -147,87 +160,6 @@
       </geometry>
     </collision>
   </link>
-<!--+++++++++++++++ wheel_hanger+++++++++++++++++++++++++++-->
-  <link name="hanger">
-    <inertial>
-      <mass value="0.01" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.00013" ixy="0" ixz="0" iyy="0.00013" iyz="0" izz="0.00013" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 -1.57" />
-      <geometry>
-	<mesh filename="package://mp500lwa4d_description/meshes/HANGER-WHEEL.STL" scale="0.01 0.01 0.01" />
-      </geometry>
-      <material name="Neobotix/Grey"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 -1.57" />
-      <geometry>
-        <sphere radius="0.00115"/>
-      </geometry>
-    </collision>
-  </link>
-
-  <joint name="hanger_joint" type="fixed">
-    <origin xyz="0.255 0 0.11" rpy="0 0 0"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="1000.0" lower="-1e+16" upper="1e+16" velocity="13.5"/>
-    <joint_properties damping="0.0" friction="0.0" />
-    <parent link="base_link" />
-    <child link="hanger" />
-  </joint>
-
-<!--+++++++++++++++ castor_front +++++++++++++++++++++++++++-->
-  <link name="castor_front">
-    <!--inertial>
-      <mass value="0.25" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025" />
-    </inertial-->
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <sphere radius="0.005"/>    
-      </geometry>
-      <material name="Neobotix/Grey"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <sphere radius="0.005"/>
-      </geometry>
-    </collision>
-  </link>
-  
-  <gazebo reference="caster_front">
-    <mu1 value="0" />
-    <mu2 value="0" />
-    <kp  value="1.0" />
-    <kd  value="1.0" />
-  </gazebo>
-
-
-  <joint name="castor_front_joint" type="fixed">
-    <origin xyz="0.32 0 0.01" rpy="0 0 0"/>
-     <!--limit effort="100.0" velocity="13.5"/>
-    <joint_properties damping="0.0" friction="0.0" /-->
-    <parent link="base_link" />
-    <child link="castor_front" />
-  </joint>
-
-
-  <!--xacro:include filename="$(find schunk_description)/urdf/common.xacro" /-->
-  <!--xacro:include filename="$(find schunk_description)/urdf/materials.urdf.xacro" /-->
-
-
-
-  <!-- schunk lwa4d -->
-  <!--xacro:include filename="$(find schunk_description)/urdf/lwa4d/lwa4d.urdf.xacro" /-->
-
-  <!--xacro:include filename="$(find schunk_description)/urdf/common.xacro" /-->
-  <!--xacro:include filename="$(find schunk_description)/urdf/lwa4d/lwa4d.gazebo.xacro"/-->
-  <!--xacro:include filename="$(find schunk_description)/urdf/lwa4d/lwa4d.transmission.xacro"/-->
 
   <!-- joint between base_link and lwa4p_extended_connector_link -->
   <joint name="arm_podest_joint" type="fixed">

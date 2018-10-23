@@ -5,30 +5,33 @@
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
+  <arg name="sim" default="true" />
+  <arg name="robot_ip" unless="$(arg sim)" />
   <arg name="model" default="$(find mp500lwa4d_description)/urdf/lwa4dmp500.urdf.xacro"/>
-  <arg name="rvizconfig" default="$(find mp500lwa4d_description)/rviz/mp500lwa4d.rviz"/>
+  <arg name="rvizconfig" default="$(find mp500lwa4d_moveit_config)/launch/moveit.rviz"/>
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
-
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
-  <!-- send robot urdf to param server -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
-    respawn="false" output="screen">
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)">
+    <rosparam command="load" file="$(find mp500lwa4d_moveit_config)/config/kinematics.yaml"/>
   </node>
 
+  <rosparam command="load" file="$(find simple_moveit_config)/config/joint_names.yaml"/>
+  <rosparam command="load" file="$(find simple_moveit_config)/config/joint_names_wheel.yaml"/>
   <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" >
       <param name="use_gui" value="false" />
       <param name="rate" value="50" />
   </node>
   <remap from="/joint_states" to="/mp500lwa4d/joint_states" />
   
-  <!-- joint_state_controller -->
-  <!--rosparam file="$(find mp500lwa4d_description)/controller/joint_state_controller.yaml" command="load"/-->
-  <!--rosparam file="$(find schunk_lwa4d)/config/arm_controller.yaml" command="load"/-->
-  <!--rosparam file="$(find mp500lwa4d_description)/controller/arm_controller.yaml" command="load"/-->
-  <!--rosparam file="$(find simple_robot_description)/controller/wheel_controller.yaml" command="load"/-->
- 
+  <group if="$(arg sim)">
+    <include file="$(find industrial_robot_simulator)/launch/robot_interface_simulator.launch" />
+  </group>
+
+  <group unless="$(arg sim)">
+    <include file="$(find [robot_interface_pkg])/launch/robot_interface.launch" >
+      <arg name="robot_ip" value="$(arg robot_ip)"/>
+    </include>
+  </group>
 
   <!--node name="controller_spawner" pkg="controller_manager" type="spawner" ns="mp500lwa4d" args="/mp500lwa4d/joint_state_controller /mp500lwa4d/mobile_base_controller" respawn="true" output="screen">
      <param name="rate" value="50" />
@@ -40,6 +43,8 @@
   <include file="$(find mp500lwa4d_moveit_config)/launch/move_group.launch">
     <arg name="publish_monitored_planning_scene" value="true" />
   </include>
+  <!--remap from="/joint_states" to="/mp500lwa4d/joint_states" />
+  <remap from="/controller_joint_names" to="/mp500lwa4d/controller_joint_names"/-->
 
   <!--include file="$(find mp500lwa4d_moveit_config)/launch/move_group.launch">
     <arg name="allow_trajectory_execution" value="true"/>
