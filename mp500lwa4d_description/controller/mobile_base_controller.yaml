@@ -24,7 +24,7 @@ mp500lwa4d:
     #cmd_vel_timeout: 0.5
     # Top level frame (link) of the robot description
     base_frame_id: base_link
-    odom_frame_id: odom
+    #odom_frame_id: odom
     #publish_cmd: False
     enable_odom_tf: true
 
@@ -36,8 +36,8 @@ mp500lwa4d:
         max_velocity: 1.5  # m/s
         min_velocity: -1.5 # m/s
         has_acceleration_limits: true
-        max_acceleration: 0.7  # m/s^2
-        min_acceleration: -0.7 # m/s^2
+        max_acceleration: 0.8  # m/s^2
+        min_acceleration: -0.8 # m/s^2
         #has_jerk_limits: true
         #max_jerk: 5  # m/s^3
     angular:
