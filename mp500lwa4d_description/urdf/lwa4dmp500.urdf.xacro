@@ -7,89 +7,46 @@
   <xacro:include filename="$(find mp500lwa4d_description)/urdf/materials.urdf.xacro"/>
   <xacro:include filename="$(find mp500lwa4d_description)/urdf/common.xacro"/>
 
-<!-- Materials -->
 
+<!--++++++++++++++++++++++++++base_link++++++++++++++++++++++++++++++++--> 
 
-  <!--material name="Neobotix/Black">
-    <color rgba="0.0 0.0 0.0 1.0"/>
-  </material>
-
-  <material name="Neobotix/Blue">
-    <color rgba="0.0 0.0 0.8 1.0"/>
-  </material>
-
-  <material name="Neobotix/Green">
-    <color rgba="0.0 0.8 0.0 1.0"/>
-  </material>
-
-  <material name="Neobotix/Grey">
-    <color rgba="0.7 0.7 0.7 1.0"/>
-  </material>
-
-  <material name="Neobotix/Grey2">
-    <color rgba="0.9 0.9 0.9 1.0"/>
-  </material>
-
-  <material name="Neobotix/Red">
-    <color rgba="0.8 0.0 0.0 1.0"/>
-  </material>
-
-  <material name="Neobotix/White">
-    <color rgba="1.0 1.0 1.0 1.0"/>
-  </material>
-    
-  <material name="Neobotix/Yellow">
-    <color rgba="1.0 1.0 0 10" />
-  </material>
-
-  <material name="Schunk/LightGrey">
-    <color rgba="0.7 0.7 0.7 1.0"/>
-  </material>
-
-  <material name="Schunk/DarkGrey">
-    <color rgba="0.4 0.4 0.4 1.0"/>
-  </material>
-
-  <material name="Schunk/Black">
-    <color rgba="0.0 0.0 0.0 1.0"/>
-  </material>
-
-  <material name="Schunk/DarkGolden">
-    <color rgba="0.4 0.4 0.3 1.0"/>
-  </material>
-
-  <material name="Schunk/Blue">
-    <color rgba="0.0 0.0 0.8 1.0"/>
-  </material-->
-
-  <!--neo_mp_500-->
-  <!--xacro:include filename="$(find neo_mp_500)/robot_model/mp_500/mp500.urdf.xacro" /-->
-
-<!--++++++++++++++++++++++++++++++base_link++++++++++++++++++++++++++++++++++++++++++++++++++++--> 
-<!--++++++++++++++++++++body++++++++++++++++++++++++++++--> 
   <link name="base_link">
     <inertial>
       <mass value="25.67" />
-      <origin xyz="0 0 0.216" rpy="0 0 0"/>
+      <origin xyz="0.15 0 0.2" rpy="0 0 0"/>
       <inertia ixx="0.54" ixy="0.0" ixz="0.0" iyy="1.08" iyz="0.0" izz="1.23" />
     </inertial>
     <visual name='body'>
       <!--origin xyz="0.0 0.0 0.234" rpy="0 0 1.57" /--><!-- for cylinder -->
-      <origin xyz="-0.160 0.0 0.09" rpy="0 0 -1.57" /><!-- for STL -->
+      <origin xyz="0 0.0 0.09" rpy="0 0 -1.57" /><!-- for STL -->
       <geometry>
-        <mesh filename="package://neo_mp_500/robot_model/mp_500/meshes/MP500-BODY.STL" scale="0.01 0.01 0.01"/>
+        <mesh filename="package://mp500lwa4d_description/meshes/MP500-BODY.STL" scale="0.01 0.01 0.01"/>
         <!--cylinder length="0.381" radius="0.2545"/-->
         <!--box size="0.445 0.277 0.17"/-->
       </geometry>
       <material name="Neobotix/Grey" />
     </visual>
     <collision name='body_collision'>
-      <origin xyz="0 0 0.216" rpy="0 0 -1.57" />
+      <origin xyz="0.15 0 0.2" rpy="0 0 -1.57" />
       <geometry>
-        <box size="0.400 0.676 0.300"/>
+        <box size="0.400 0.400 0.300"/>
         <!--cylinder length="0.381" radius="0.2545"/-->
       </geometry>
     </collision>
+      <visual>
+	  <origin xyz="0.45 0 0.01" rpy="0 0 0" />
+	  <geometry>
+            <sphere radius="0.005"/>    
+	  </geometry>
+	 <material name="Neobotix/Grey" />
+	</visual>
+
+        <collision>
+	  <origin xyz="0.45 0 0.01" rpy="0 0 0" />
+	  <geometry>
+             <sphere radius="0.005"/>
+	  </geometry>
+      </collision>
   </link>
 
 <!--+++++++++++++++++++wheel_left_link++++++++++++++++++++++++--> 
@@ -97,12 +54,12 @@
     <inertial>
       <mass value="1.0" />
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078125" iyz="0" izz="0.0045" />
+      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078" iyz="0" izz="0.0045" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 -1.57" />
       <geometry>
-	<mesh filename="package://neo_mp_500/robot_model/mp_500/meshes/MP500-WHEEL.STL" scale="0.01 0.01 0.01" /> 
+	<mesh filename="package://mp500lwa4d_description/meshes/MP500-WHEEL.STL" scale="0.01 0.01 0.01" /> 
       </geometry>
       <material name="Neobotix/Black" />
     </visual>
@@ -117,7 +74,7 @@
 
 <!--+++++++++++++++++++wheel_left_joint++++++++++++++++++++++++--> 
   <joint name="wheel_left_joint" type="revolute">
-    <origin xyz="-0.155 0.255 0.13" rpy="0 0 0" />
+    <origin xyz="0 0.255 0.13" rpy="0 0 0" />
     <axis xyz="0 1 0"/>
     <limit effort="10000.0" lower="-1e+16" upper="1e+16" velocity="11.6"/>
     <joint_properties damping="0.0" friction="0.0" />
@@ -131,12 +88,12 @@
       <mass value="1" />
       <origin xyz="0 0 0" rpy="0 0 0" />
       <!--inertia ixx="0.0051" ixy="0" ixz="0" iyy="0.0051" iyz="0" izz="0.009" /-->
-      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078125" iyz="0" izz="0.0045" />
+      <inertia ixx="0.0045" ixy="0" ixz="0" iyy="0.0078" iyz="0" izz="0.0045" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 -1.57" />
       <geometry>
-	<mesh filename="package://neo_mp_500/robot_model/mp_500/meshes/MP500-WHEEL.STL" scale="0.01 0.01 0.01" />
+	<mesh filename="package://mp500lwa4d_description/meshes/MP500-WHEEL.STL" scale="0.01 0.01 0.01" />
       </geometry>
       <material name="Neobotix/Black"/>
     </visual>
@@ -150,7 +107,7 @@
 
 <!--+++++++++++++++++++wheel_right_joint++++++++++++++++++++++++--> 
   <joint name="wheel_right_joint" type="revolute">
-    <origin xyz="-0.155 -0.255 0.13" rpy="0 0 0" />
+    <origin xyz="0 -0.255 0.13" rpy="0 0 0" />
     <axis xyz="0 1 0"/>
     <limit effort="10000.0" lower="-1e+16" upper="1e+16" velocity="11.6"/>
     <joint_properties damping="0.0" friction="0.0" />
@@ -159,157 +116,9 @@
   </joint>
 
 
-<!--+++++++++++++++++++laserscanner_front_joint++++++++++++++++++++++++--> 
-  <joint name="laserscanner_front_joint" type="fixed">
-    <axis xyz="0 0 1" />
-    <origin xyz="-0.39 0 0.281" rpy="0 0 0" />
-    <parent link="base_link"/>
-    <child link="laserscanner_front_link"/>
-  </joint>
-
-<!--+++++++++++++++++++laserscanner_front_link++++++++++++++++++++++++-->
-  <link name="laserscanner_front_link" type="laser">
-    <inertial>
-      <mass value="0.01" />
-      <origin xyz="0 0 0" rpy="3.14 0 -1.57" />
-      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 -0.04" rpy="3.14 0 -1.57" />
-      <geometry>
-        <!--cylinder length="0.154" radius="0.053" /-->		  		
-        <mesh filename="package://neo_mp_500/robot_model/mp_500/meshes/SICK-S300.STL" />
-      </geometry>
-      <material name="Neobotix/Yellow"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="3.14 0 -1.57" />
-      <geometry>
-	<cylinder length="0.154" radius="0.053" />
-      </geometry>
-    </collision>
-  </link>
-<!--+++++++++++++++ wheel_hanger+++++++++++++++++++++++++++-->
-  <link name="hanger">
-    <inertial>
-      <mass value="0.01" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.00013" ixy="0" ixz="0" iyy="0.00013" iyz="0" izz="0.00013" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 -1.57" />
-      <geometry>
-	<mesh filename="package://neo_mp_500/robot_model/mp_500/meshes/HANGER-WHEEL.STL" scale="0.01 0.01 0.01" />
-      </geometry>
-      <material name="Neobotix/Grey"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 -1.57" />
-      <geometry>
-        <sphere radius="0.00115"/>
-      </geometry>
-    </collision>
-  </link>
-
-  <joint name="hanger_joint" type="fixed">
-    <origin xyz="0.255 0 0.11" rpy="0 0 0"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10000.0" lower="-1e+16" upper="1e+16" velocity="13.5"/>
-    <joint_properties damping="0.0" friction="0.0" />
-    <parent link="base_link" />
-    <child link="hanger" />
-  </joint>
-
-<!--+++++++++++++++ castor_front +++++++++++++++++++++++++++-->
-  <link name="castor_front">
-    <inertial>
-      <mass value="0.25" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <sphere radius="0.005"/>    
-      </geometry>
-      <material name="Neobotix/Grey"/>
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <sphere radius="0.005"/>
-      </geometry>
-    </collision>
-  </link>
-  
-  <gazebo reference="caster_front">
-    <mu1 value="0" />
-    <mu2 value="0" />
-    <kp  value="1.0" />
-    <kd  value="1.0" />
-  </gazebo>
-
-
-  <joint name="castor_front_joint" type="fixed">
-    <origin xyz="0.32 0 0.01" rpy="0 0 0"/>
-     <!--limit effort="100.0" velocity="13.5"/>
-    <joint_properties damping="0.0" friction="0.0" /-->
-    <parent link="base_link" />
-    <child link="castor_front" />
-  </joint>
-
-<!--+++++++++++++++ castor_back +++++++++++++++++++++++++++-->
-  <!--link name="castor_back">
-    <inertial>
-    <mass value="0.25" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
-    <inertia ixx="0.000025" ixy="0" ixz="0" iyy="0.000025" iyz="0" izz="0.000025" />
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <sphere radius="0.005"/>    
-      </geometry>
-      <material name="Neobotix/Grey" />
-    </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-       <sphere radius="0.005"/>
-      </geometry>
-    </collision>
-  </link>
-
-  <gazebo reference="caster_back">
-   <mu1 value="0" />
-   <mu2 value="0" />
-   <kp  value="1.0" />
-   <kd  value="1.0" />
-  </gazebo-->
-
-  <!--joint name="castor_back_joint" type="fixed">
-    <origin xyz="-0.30 0 0.01" rpy="0 0 0"/>
-    
-    <parent link="base_link" />
-    <child link="castor_back" />
-  </joint-->
-
-
-  <!--xacro:include filename="$(find schunk_description)/urdf/common.xacro" /-->
-  <!--xacro:include filename="$(find schunk_description)/urdf/materials.urdf.xacro" /-->
-
-
-
-  <!-- schunk lwa4d -->
-  <!--xacro:include filename="$(find schunk_description)/urdf/lwa4d/lwa4d.urdf.xacro" /-->
-
-  <!--xacro:include filename="$(find schunk_description)/urdf/common.xacro" /-->
-  <!--xacro:include filename="$(find schunk_description)/urdf/lwa4d/lwa4d.gazebo.xacro"/-->
-  <!--xacro:include filename="$(find schunk_description)/urdf/lwa4d/lwa4d.transmission.xacro"/-->
-
   <!-- joint between base_link and lwa4p_extended_connector_link -->
   <joint name="arm_podest_joint" type="fixed">
-    <origin xyz="0.19 0 0.36" rpy="0 0 0" />
+    <origin xyz="0.345 0 0.37" rpy="0 0 0" />
     <parent link="base_link"/>
     <child link="arm_podest_link"/>
   </joint>
@@ -318,7 +127,7 @@
     <inertial>
       <mass value="2" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+      <inertia ixx="0.0091" ixy="0.0" ixz="0.0" iyy="0.0091" iyz="0.0" izz="0.0049" />
     </inertial>
     <visual>
       <geometry>
@@ -343,9 +152,9 @@
   <link name="arm_base_link">
     <!--xacro:default_inertial/-->
     <inertial>
-      <mass value="2" />
+      <mass value="0.01" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
     </inertial>
   </link>
 
@@ -360,9 +169,9 @@
 <!-- arm_1_link-->
   <link name="arm_1_link">
     <inertial>
-      <mass value="2" />
+      <mass value="1" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+      <inertia ixx="0.00455" ixy="0.0" ixz="0.0" iyy="0.00455" iyz="0.0" izz="0.00245" />
     </inertial>
     <visual>
       <geometry>
@@ -388,9 +197,9 @@
 <!-- arm_2_link -->
   <link name="arm_2_link">
     <inertial>
-      <mass value="2" />
+      <mass value="1" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+      <inertia ixx="0.00455" ixy="0.0" ixz="0.0" iyy="0.00245" iyz="0.0" izz="0.00455" />
     </inertial>
     <visual>
       <geometry>
@@ -416,9 +225,9 @@
 <!-- arm_3_link -->
   <link name="arm_3_link">
     <inertial>
-      <mass value="2" />
+      <mass value="1" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+      <inertia ixx="0.00455" ixy="0.0" ixz="0.0" iyy="0.00455" iyz="0.0" izz="0.00245" />
     </inertial>
     <visual>
       <geometry>
@@ -444,9 +253,9 @@
 <!--arm_4_link -->
   <link name="arm_4_link">
     <inertial>
-      <mass value="2" />
+      <mass value="1" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+      <inertia ixx="0.00455" ixy="0.0" ixz="0.0" iyy="0.00245" iyz="0.0" izz="0.00455" />
     </inertial>
     <visual>
       <geometry>
@@ -472,9 +281,9 @@
 <!-- arm_5_link -->
   <link name="arm_5_link">
     <inertial>
-      <mass value="2" />
+      <mass value="1" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+       <inertia ixx="0.00455" ixy="0.0" ixz="0.0" iyy="0.00245" iyz="0.0" izz="0.00455" />
     </inertial>
     <visual>
       <geometry>
@@ -500,9 +309,9 @@
 <!-- arm_6_link -->
   <link name="arm_6_link">
     <inertial>
-      <mass value="2" />
+      <mass value="1" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+      <inertia ixx="0.00196" ixy="0.0" ixz="0.0" iyy="0.00196" iyz="0.0" izz="0.00196" />
     </inertial>
     <visual>
       <geometry>
@@ -528,9 +337,9 @@
 <!--arm_7_link -->
   <link name="arm_7_link">
     <inertial>
-      <mass value="2" />
+      <mass value="0.5" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
     </inertial>
     <visual>
       <geometry>
@@ -554,161 +363,11 @@
 
   <link name="arm_ee_link">
     <inertial>
-      <mass value="1" />
+      <mass value="0.01" />
       <origin xyz="0 0 0" />
-      <inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005" />
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
     </inertial>
   </link>
-
-
-  <!--transmission name="wheel_left_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="wheel_left_joint">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="wheel_left_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>0.1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="wheel_right_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="wheel_right_joint">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="wheel_right_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>0.1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-
-  <transmission name="arm_1_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_1_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_1_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_2_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_2_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_2_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_3_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_3_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_3_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_4_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_4_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_4_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_5_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_5_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_5_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_6_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_6_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_6_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-  <transmission name="arm_7_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="arm_7_joint">
-      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="arm_7_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission>
-
-<gazebo reference="arm_base_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/Black"/>
-</gazebo>
-
-<gazebo reference="arm_1_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/LightGrey"/>
-</gazebo>
-
-<gazebo reference="arm_2_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/Black"/>
-</gazebo>
-
-<gazebo reference="arm_3_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/LightGrey"/>
-</gazebo>
-
-<gazebo reference="arm_4_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/Black"/>
-</gazebo>
-
-<gazebo reference="arm_5_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/LightGrey"/>
-</gazebo>
-
-<gazebo reference="arm_6_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/Black"/>
-</gazebo>
-
-<gazebo reference="arm_7_link">
-  <gravity>true</gravity>
-  <self_collide>false</self_collide>
-  <material value="Schunk/LightGrey"/>
-</gazebo-->
-
 
 <gazebo>
   <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
@@ -719,7 +378,7 @@
     <rightJoint>wheel_right_joint</rightJoint>
     <wheelSeparation>0.51</wheelSeparation>
     <wheelDiameter>0.125</wheelDiameter>
-    <torque>2.5</torque>
+    <torque>45</torque>
     <commandTopic>/mp500lwa4d/mobile_base_controller/cmd_vel</commandTopic>
     <odometryTopic>odom</odometryTopic>
     <odometryFrame>map</odometryFrame>
@@ -728,15 +387,20 @@
     <rosDebugLevel>Debug</rosDebugLevel>
     <publishWheelTF>true</publishWheelTF>
     <publishWheelJointState>true</publishWheelJointState>
-    <wheelAcceleration>0.1</wheelAcceleration>
-    <wheelTorque>2.5</wheelTorque>
+    <wheelAcceleration>0.01</wheelAcceleration>
+    <wheelTorque>45</wheelTorque>
     <publishTf>1</publishTf>
     <odometrySource>encoder</odometrySource>
   </plugin>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+  <!--plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so"-->
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <!--plugin name="ros_control" filename="libhwi_switch_gazebo_ros_control.so"-->
     <robotNamespace>mp500lwa4d</robotNamespace>
     <filterJointsParam>joint_names</filterJointsParam>
   </plugin>
+  <!--plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+  <jointName>wheel_left_joint, wheel_right_joint</jointName>
+  </plugin>>-->
 </gazebo>
 
 

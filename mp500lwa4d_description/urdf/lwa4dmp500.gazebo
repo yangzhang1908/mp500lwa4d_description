@@ -15,52 +15,43 @@
   <!-- Left Wheel -->
   <gazebo reference="wheel_left_link">
     <turnGravityOff>false</turnGravityOff>
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
     <kp>10000000.0</kp>
-    <kd>10.0</kd>
+    <kd>1.0</kd>
     <fdir1 value="1 0 0"/>
   </gazebo>
 
   <!-- Base Link -->
   <gazebo reference="base_link">
     <turnGravityOff>false</turnGravityOff>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+     <surface>
+      <friction>
+        <ode>
+          <mu>0</mu>
+          <mu2>0</mu2>
+          <!--slip1>1.0</slip1>
+          <slip2>1.0</slip2-->
+        </ode>
+      </friction>
+    </surface>
   </gazebo>
-  <gazebo reference="hanger">
-    <turnGravityOff>false</turnGravityOff>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
- </gazebo>
-  <gazebo reference="castor_back">
-    <turnGravityOff>false</turnGravityOff>
-    <mu1>0.0</mu1>
-    <mu2>0.0</mu2>
- </gazebo>
+
   <gazebo reference="castor_front">
     <turnGravityOff>false</turnGravityOff>
     <mu1>0.0</mu1>
     <mu2>0.0</mu2>
  </gazebo>
-  <!-- Base Link -->
-<!--  <gazebo reference="base_link">
-    <surface>
-      <friction>
-        <ode>
-          <mu>0</mu>
-          <mu2>0</mu2>
-          <slip1>1.0</slip1>
-          <slip2>1.0</slip2>
-        </ode>
-      </friction>
-    </surface>
-  </gazebo>-->
+
   <!-- Right Wheel -->
   <gazebo reference="wheel_right_link">
     <turnGravityOff>false</turnGravityOff>
-    <mu1>10.0</mu1>
-    <mu2>10.0</mu2>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
     <kp>10000000.0</kp>
-    <kd>10.0</kd>
+    <kd>1.0</kd>
     <fdir1 value="1 0 0"/>
   </gazebo>
 
